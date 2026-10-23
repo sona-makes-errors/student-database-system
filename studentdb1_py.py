@@ -39,12 +39,15 @@ def display():
     print(row)
 
 def update_marks():
-  ID=(input("Enter your ID number:")
+  ID=input("Enter your ID number:")
   marks=int(input("Enter the updated marks:"))
 
   cursor.execute('update students set marks=? where id=?', (marks,ID))
   con.commit()
-  print("data updated")
+  if cursor.rowcount==0:
+   print("no student with that id")
+  else:
+   print("data updated")
 
 def find():
   name=input("enter the name of the student to find:")
@@ -57,14 +60,16 @@ def delete():
 
   cursor.execute("delete from students where id=?", (ID,))
   con.commit()
-
-  print("Student info deleted")
+  if cursor.rowcount==0:
+   print("No student with that id")
+  else:
+   print("Student info deleted")
 
 print("This is a menu driven program:")
 while True:
   print("""THE MENU IS AS FOLLOWS:
   1. To enter student's record
-  2. To display you records
+  2. To display your records
   3. To update your marks
   4. To find your record
   5. To delete your record
@@ -85,7 +90,7 @@ while True:
     print("Goodbye!")
     break
   else:
-    print("Invaild option, try again")
+    print("Invalid option, try again")
 
 
 
