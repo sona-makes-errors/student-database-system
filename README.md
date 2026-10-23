@@ -7,6 +7,6 @@ A menu-driven student Database system to add the student's info, update, delete 
 - Update marks
 - Delete a student
 - Input validation with error handling (invalid name, marks out of range)
-## Tevh used
+## Tech used
 - Python
 - SQLite3
